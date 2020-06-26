@@ -7,14 +7,30 @@ class ViewController: UIViewController {
   
   let host = "localhost"
   let port = 9000
-  var client: TCPClient?
+    var client: TCPClient?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
     client = TCPClient(address: host, port: Int32(port))
   }
-  
+
+    var uinput: String = "text box didn't connect"
+    
+    //our label to display input
+    @IBOutlet weak var labelName: UILabel!
+    
+    //this is the text field we created
+    @IBOutlet weak var textFieldName: UITextField!
+    
+    @IBAction func buttonClick(sender: UIButton) {
+        //getting input from Text Field
+        uinput = textFieldName.text!
+        
+        //Displaying input text into label
+        labelName.text = uinput
+    }
+    
   @IBAction func sendButtonAction() {
     guard let client = client else { return }
     
@@ -22,7 +38,7 @@ class ViewController: UIViewController {
     case .success:
       appendToTextField(string: "Connected to host \(client.address)")
       
-      if let response = sendRequest(string: "Hi Server\n", using: client) {
+      if let response = sendRequest(string: uinput, using: client) {
         appendToTextField(string: "Response: \(response)")
       }
     case .failure(let error):
@@ -30,10 +46,12 @@ class ViewController: UIViewController {
     }
   }
   
+  
+    
   private func sendRequest(string: String, using client: TCPClient) -> String? {
     appendToTextField(string: "Sending data ... ")
-    appendToTextField(string: "Hi Server\n")
-    switch client.send(string: string) {
+    appendToTextField(string: uinput)
+    switch client.send(string: uinput) {
     case .success:
       return readResponse(from: client)
     case .failure(let error):
@@ -52,5 +70,4 @@ class ViewController: UIViewController {
     print(string)
     textView.text = textView.text.appending("\n\(string)")
   }
-
 }
