@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,16 +43,23 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JFV-o8-msm">
-                                        <rect key="frame" x="0.0" y="84.5" width="311" height="520.5"/>
+                                        <rect key="frame" x="0.0" y="84.5" width="311" height="490.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NV-sq-dr2">
+                                        <rect key="frame" x="0.0" y="575" width="311" height="30"/>
+                                        <state key="normal" title="Connect"/>
+                                        <connections>
+                                            <action selector="connectButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="WFp-fI-e3w"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Zb-7f-RAm">
                                         <rect key="frame" x="0.0" y="605" width="311" height="30"/>
                                         <state key="normal" title="Send data"/>
                                         <connections>
-                                            <action selector="sendButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="dre-Ph-16U"/>
+                                            <action selector="sendButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Iu-Bv-Ca7"/>
                                         </connections>
                                     </button>
                                 </subviews>

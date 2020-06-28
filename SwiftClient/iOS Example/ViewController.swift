@@ -29,21 +29,24 @@ class ViewController: UIViewController {
         
         //Displaying input text into label
         labelName.text = uinput
+        uinput.append("\n")
     }
     
-  @IBAction func sendButtonAction() {
-    guard let client = client else { return }
+    @IBAction func connectButtonAction(){
+        guard let client = client else { return }
+        switch client.connect(timeout: 10) {
+        case .success:
+        appendToTextField(string: "Connected to host \(client.address)")
+        case .failure(let error):
+            appendToTextField(string: String(describing: error))
+        }
+    }
     
-    switch client.connect(timeout: 10) {
-    case .success:
-      appendToTextField(string: "Connected to host \(client.address)")
-      
+    @IBAction func sendButtonAction() {
+    guard let client = client else { return }
       if let response = sendRequest(string: uinput, using: client) {
         appendToTextField(string: "Response: \(response)")
       }
-    case .failure(let error):
-      appendToTextField(string: String(describing: error))
-    }
   }
   
   
